@@ -424,6 +424,7 @@ GameObject:
   - component: {fileID: 670233022}
   - component: {fileID: 670233024}
   - component: {fileID: 670233025}
+  - component: {fileID: 670233026}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -612,6 +613,18 @@ MonoBehaviour:
   minSize: 0.5
   healthDecreaseRate: 6
   healthBar: {fileID: 1629980069}
+--- !u!114 &670233026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670233017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddb71452241334fc4a9b3fa91dd788dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &698408410 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1011351555658850571, guid: a85a8288ed59f41aeb91f247add7cdfb, type: 3}
@@ -902,6 +915,7 @@ GameObject:
   - component: {fileID: 1215753494}
   - component: {fileID: 1215753495}
   - component: {fileID: 1215753496}
+  - component: {fileID: 1215753497}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1093,6 +1107,18 @@ MonoBehaviour:
   bullet: {fileID: 8854819506795147271, guid: c3881b94269759b4290921b198ad1b89, type: 3}
   bulletSpawnDistance: 0.01
   shootSpeed: 1
+--- !u!114 &1215753497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215753489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddb71452241334fc4a9b3fa91dd788dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1239533450
 GameObject:
   m_ObjectHideFlags: 0

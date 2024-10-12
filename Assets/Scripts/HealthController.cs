@@ -51,23 +51,9 @@ public class HealthController : MonoBehaviour
         UpdatePlayerScale();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (isPlayer && collision.gameObject.tag == "Enemy")
-        {
-            //Debug.Log("Collided with enemy");
-            //Debug.Log(collision.gameObject.GetComponent<BulletBehaviour>().calories);
-            TakeDamage(collision.gameObject.GetComponent<BulletBehaviour>().calories);
-        }
-        else if (!isPlayer && collision.gameObject.tag == "Player")
-        {
-            //Debug.Log("Collided with player");
-            //Debug.Log(collision.gameObject.GetComponent<BulletBehaviour>().calories);
-            TakeDamage(collision.gameObject.GetComponent<BulletBehaviour>().calories);
-        }
-    }
+   
 
-    void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         currentHealth += damage;
 
