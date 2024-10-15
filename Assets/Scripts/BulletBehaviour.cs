@@ -38,6 +38,18 @@ public class BulletBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
+       if (collision.gameObject.tag == "Mirror")
+        {
+            // Reflect the bullet using the normal of the surface it hit
+            Vector2 reflectDirection = Vector2.Reflect(rb.velocity.normalized, collision.transform.up); // Using the up vector of the mirror surface
+            setVelocity(reflectDirection);  // Set the new direction
+        }
+        else
+        {
+            // Destroy the bullet if it hits anything else
+            Destroy(gameObject);
+        }
     }
+
+    
 }
