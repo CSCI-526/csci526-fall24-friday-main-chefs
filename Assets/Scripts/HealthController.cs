@@ -19,6 +19,11 @@ public class HealthController : MonoBehaviour
     public healthBar healthBar;  
     private bool isDead; 
 
+
+    // Variables for isExploding 
+    private bool isExploding = false; // Track if the player is in an "exploding" state
+    private float explosionTimer = 0f; // Timer for the explosion effect
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,9 +58,16 @@ public class HealthController : MonoBehaviour
 
    
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, string bulletTag )
     {
         currentHealth += damage;
+
+        // This is code after we have implemented bulletTag, we have to pass that in TakeDamage Function to detect mentos and soda
+        if (bulletTag == "mentos" || bulletTag == "soda")
+        {
+            TriggerExplosionEffect();
+        }
+
 
         if (currentHealth> maxHealth)
         {
@@ -80,14 +92,46 @@ public class HealthController : MonoBehaviour
         healthBar.SetHealth(currentHealth);
     }
 
+    // For TriggerExplosionEffect
+    void TriggerExplosionEffect()
+    {
+        isExploding = true;
+        explosionTimer = 0f; // Reset the timer when the explosion is triggered
+    }
+
     void UpdatePlayerScale()
     {
+        // For effect on player and enemy for deformation when they are hit by mentos and soda bullet
+         if (isExploding)
+        {
+            // Increase the explosion timer
+            explosionTimer += Time.deltaTime;
+
+            // Generate dynamic scaling using Perlin Noise for an uneven bulging effect
+            float scaleX = Mathf.Lerp(minSize, maxSize * 2, Mathf.PerlinNoise(explosionTimer, 0f));
+            float scaleY = Mathf.Lerp(minSize, maxSize * 2, Mathf.PerlinNoise(0f, explosionTimer));
+
+            // Update the player's scale based on dynamic Perlin Noise values
+            transform.localScale = new Vector3(scaleX, scaleY, 1);
+
+            // Stop the explosion effect after a certain time
+            if (explosionTimer > 2f) // Change duration as needed
+            {
+                isExploding = false;
+            }
+        }
+        else 
+        {
         // Normalize health to a value between 0.5 and 1.5 for scaling
         float healthPercentage = (float)currentHealth/maxHealth; 
         float newScale = Mathf.Lerp(minSize, maxSize, healthPercentage);
 
         // Update the player's scale based on current health
         transform.localScale = new Vector3 (newScale, newScale, 1);
+
+        }
+
+       
     }
 
 }

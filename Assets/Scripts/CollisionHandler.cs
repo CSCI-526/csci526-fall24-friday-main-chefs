@@ -18,13 +18,13 @@ public class CollisionHandler : MonoBehaviour
         {
             // Call the TakeDamage method in HealthController and pass the bullet's calories (damage)
             float damage = collision.gameObject.GetComponent<BulletBehaviour>().calories;
-            healthController.TakeDamage(damage);
+            healthController.TakeDamage(damage, collision.gameObject.tag);
         }
         else if (collision.gameObject.tag == "Player" && !healthController.isPlayer)
         {
             // Call the TakeDamage method in HealthController and pass the bullet's calories (damage)
             float damage = collision.gameObject.GetComponent<BulletBehaviour>().calories;
-            healthController.TakeDamage(damage);
+            healthController.TakeDamage(damage, collision.gameObject.tag);
         }
     }
 
@@ -40,3 +40,8 @@ public class CollisionHandler : MonoBehaviour
         
     }
 }
+
+
+/* When ever we are calling takeDamage here we also need to pass the tag of bullet to decide the effect on player and enemy body.
+healthController.TakeDamage(damage, collision.gameObject.tag);
+*/
