@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Merge/BattleField.unity
     guid: 298251bec447c964ca93607be5053ea8
+  - enabled: 1
+    path: Assets/Scenes/Merge/Instruction.unity
+    guid: 0fbf8aceea1e77f40b54339e7e40fad5
   m_configObjects: {}
