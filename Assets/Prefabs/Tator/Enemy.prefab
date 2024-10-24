@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7417187684442466708}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 8854819506795147271, guid: c3881b94269759b4290921b198ad1b89, type: 3}
-  player: {fileID: 0}
+  target: {fileID: 0}
   radius: 5
   topSpeedOut: 4
   topSpeedIn: 10
@@ -185,8 +185,10 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   maxHealth: 100
   currentHealth: 80
+  maxSizeUpperBound: 7.5
   maxSize: 1.5
   minSize: 0.5
+  maxSizeDecreaseRate: 0.5
   healthDecreaseRate: 6
   healthBar: {fileID: 5537828871599242576}
 --- !u!114 &7417187684442466708
@@ -202,7 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 0
-  player: {fileID: 0}
+  target: {fileID: 0}
   bullet: {fileID: 8854819506795147271, guid: c3881b94269759b4290921b198ad1b89, type: 3}
   bulletSpawnDistance: 0.01
   shootSpeed: 1
