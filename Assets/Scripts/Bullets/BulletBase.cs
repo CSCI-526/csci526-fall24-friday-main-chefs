@@ -9,6 +9,7 @@ public abstract class BulletBase : MonoBehaviour
     public float bulletSpeed = 10f;
     public float bulletLifeTime = 2f;
     public float calories = 10f;
+    public static Dictionary<string, int> counter = new Dictionary<string, int>();
     protected Rigidbody2D rb;
     protected float lifeTime = 0;
 
@@ -20,6 +21,19 @@ public abstract class BulletBase : MonoBehaviour
 
     // Abstract method (Different movement trajectories for each type of bullet)
     public abstract void SetTrajectory(Vector2 direction);
+
+    public void SetCounter(FoodType ftype)
+    {
+        string stringType = ftype.ToString().ToLower();
+
+        if (counter.ContainsKey(stringType))
+        {
+            counter[stringType] += 1; 
+        }else
+        {
+            counter[stringType] = 1;
+        }
+    }
 
     protected virtual void Awake()
     {

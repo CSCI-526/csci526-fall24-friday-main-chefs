@@ -7,7 +7,8 @@ public class HealthController : MonoBehaviour
 {
     public bool isPlayer;
 
-    public GameManagerScript gameManager; 
+    public GameManagerScript gameManager;
+    public LogManagerScript logManager; 
     public float maxHealth = 100f; 
     public float currentHealth = 50f;
 
@@ -18,14 +19,17 @@ public class HealthController : MonoBehaviour
 
     public float healthDecreaseRate = 0.5f; // used for decreasing health with respect to time
 
-    public healthBar healthBar;  
+    public healthBar healthBar;
+    public bool isLog;  
     private bool isDead; 
 
     // Start is called before the first frame update
     void Start()
     {
+        isLog = false;
         healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(currentHealth);
+        logManager = FindObjectOfType<LogManagerScript>();
     }
 
     // Update is called once per frame
@@ -37,6 +41,12 @@ public class HealthController : MonoBehaviour
             isDead = true ;
             if(isPlayer)
             {
+                if (!isLog)
+                {
+                    Debug.Log("Start to upload log data");
+                    logManager.ExternalUpload(BulletBase.counter, "Lose");
+                    isLog = true;
+                }
                 gameManager.gameOver("You lose!");
             }
             else
@@ -61,6 +71,12 @@ public class HealthController : MonoBehaviour
             isDead = true ;
             if (isPlayer)
             {
+                if (!isLog)
+                {
+                    Debug.Log("Start to upload log data");
+                    logManager.ExternalUpload(BulletBase.counter, "Lose");
+                    isLog = true;
+                }
                 gameManager.gameOver("You lose!");
             }
             else

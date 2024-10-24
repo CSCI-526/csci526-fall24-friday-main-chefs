@@ -31,6 +31,7 @@ public class ShootController : MonoBehaviour
             bulletSpawn.y += Mathf.Sin(angle) * bulletSpawnRadius;
             GameObject newBullet = Instantiate(bullet, bulletSpawn, Quaternion.identity);
             newBullet.GetComponent<BulletBase>().SetTrajectory(new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)));
+            newBullet.GetComponent<BulletBase>().SetCounter(newBullet.GetComponent<BulletBase>().foodType);
             timeCount = 0;
         }
         else if(!isPlayer && timeCount > shootTime)
