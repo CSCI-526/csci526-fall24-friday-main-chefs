@@ -5,23 +5,33 @@ using UnityEngine;
 public class ShootController : MonoBehaviour
 {
     public bool isPlayer;
+    public float bulletSpawnDistance = 0.05f;
+    public float shootSpeed = 3.0f;
     public GameObject target;
     public GameObject bullet;
-    public float bulletSpawnDistance = 0.05f;
-    public float shootSpeed = 3;
-    private float shootTime = 0;
-    private float timeCount = 0;
+
+    private float shootTime = 0.0f;
+    private float timeCount = 0.0f;
     private float bulletSpawnRadius;
+    private MovementController movementController;
+
     // Start is called before the first frame update
     void Start()
     {
         shootTime = 1 / shootSpeed;
         bulletSpawnRadius = bulletSpawnDistance + transform.localScale.x / 2 + bullet.transform.localScale.x / 2;
+        movementController = GameObject.Find("Player").GetComponent<MovementController>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Stop shooting when the player is jumping
+        if (movementController.isJumping)
+        {
+            return;
+        }
+
         bulletSpawnRadius = bulletSpawnDistance + transform.localScale.x / 2 + bullet.transform.localScale.x / 2;
         if(isPlayer && Input.GetMouseButton(0) && timeCount > shootTime)
         {            

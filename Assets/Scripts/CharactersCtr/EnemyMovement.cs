@@ -10,14 +10,22 @@ public class EnemyMovement : MonoBehaviour
     public float topSpeedIn = 10f;
 
     private Rigidbody2D rb;
+    private MovementController movementController;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        movementController = GameObject.Find("Player").GetComponent<MovementController>();
     }
 
     void Update()
     {
+        // Stop moving when the player is jumping
+        if (movementController.isJumping)
+        {
+            return;
+        }
+
         float distance = Vector3.Distance(transform.position, target.position);
 
         float currentSpeed;

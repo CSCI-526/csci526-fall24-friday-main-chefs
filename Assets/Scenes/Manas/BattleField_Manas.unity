@@ -370,10 +370,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 0
-  target: {fileID: 670233017}
-  bullet: {fileID: 8854819506795147271, guid: c9113218b91415445a056ebd9b357a90, type: 3}
   bulletSpawnDistance: 0.01
   shootSpeed: 3
+  target: {fileID: 670233017}
+  bullet: {fileID: 8854819506795147271, guid: c9113218b91415445a056ebd9b357a90, type: 3}
 --- !u!50 &64238406
 Rigidbody2D:
   serializedVersion: 4
@@ -1516,6 +1516,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  jumpDuration: 3
+  jumpDistance: 10
+  isJumping: 0
+  jumpCurveAsset: {fileID: 11400000, guid: 18b6f90c3d784454294376b016f6616b, type: 2}
 --- !u!114 &670233024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1529,10 +1533,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 1
-  target: {fileID: 0}
-  bullet: {fileID: 8854819506795147271, guid: 3dbf1aba1c7211d4b991054c5ae51402, type: 3}
   bulletSpawnDistance: 0.01
   shootSpeed: 20
+  target: {fileID: 0}
+  bullet: {fileID: 8854819506795147271, guid: 3dbf1aba1c7211d4b991054c5ae51402, type: 3}
 --- !u!114 &670233025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4106,10 +4110,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 0
-  target: {fileID: 670233017}
-  bullet: {fileID: 8854819506795147271, guid: 22ac3d0740cda0e4c9d58c533f55eb47, type: 3}
   bulletSpawnDistance: 0.01
   shootSpeed: 3
+  target: {fileID: 670233017}
+  bullet: {fileID: 8854819506795147271, guid: 22ac3d0740cda0e4c9d58c533f55eb47, type: 3}
 --- !u!50 &1674743673
 Rigidbody2D:
   serializedVersion: 4
