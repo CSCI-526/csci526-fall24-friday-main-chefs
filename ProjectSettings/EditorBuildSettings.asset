@@ -9,9 +9,21 @@ EditorBuildSettings:
     path: Assets/Scenes/Merge/MainMenu.unity
     guid: 906706e9096a7a947b4d45ba6d63f7a0
   - enabled: 1
-    path: Assets/Scenes/Merge/BattleField.unity
-    guid: 298251bec447c964ca93607be5053ea8
-  - enabled: 1
     path: Assets/Scenes/Merge/Instruction.unity
     guid: 0fbf8aceea1e77f40b54339e7e40fad5
+  - enabled: 1
+    path: Assets/Scenes/Merge/Levels/Level1.unity
+    guid: 37e899e935e6acf4eba16fa03dc8a93c
+  - enabled: 1
+    path: Assets/Scenes/Merge/Levels/Level2.unity
+    guid: 6d291183d10d07649ba216b4f304f679
+  - enabled: 1
+    path: Assets/Scenes/Merge/Levels/Level3.unity
+    guid: 89add97f66254dc46b2c9bbc49a595cc
+  - enabled: 1
+    path: Assets/Scenes/Merge/Levels/Level4.unity
+    guid: ffa2d2af7df2a304f8d105c1ab911a93
+  - enabled: 1
+    path: Assets/Scenes/Merge/Levels/Level5.unity
+    guid: 9b0d8f15f72571d41b7ae3c47de14a4c
   m_configObjects: {}

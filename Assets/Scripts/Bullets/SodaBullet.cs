@@ -17,7 +17,7 @@ public class SodaBullet : BulletBase
         // Implement bullet's unique trajectory in this area
         // BasicTrajectory is just a simplest template
         BasicTrajectory(direction);
-        rb.velocity = direction * 10f;  
+        rb.velocity = direction * bulletSpeed;  
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)

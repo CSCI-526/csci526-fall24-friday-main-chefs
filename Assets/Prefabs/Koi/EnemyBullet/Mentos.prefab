@@ -163,5 +163,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodType: 0
   bulletSpeed: 5
-  bulletLifeTime: 1
-  calories: 1
+  bulletLifeTime: 3
+  calories: 5
