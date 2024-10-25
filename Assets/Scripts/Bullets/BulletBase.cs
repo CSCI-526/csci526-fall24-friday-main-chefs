@@ -4,11 +4,12 @@ using UnityEngine;
 
 public abstract class BulletBase : MonoBehaviour
 {
-    public enum FoodType {Regular, Mentos, Soda}; // Define different food types
+    public enum FoodType { Regular, Mentos, Soda }; // Define different food types
     public FoodType foodType;  // Store the type of food
     public float bulletSpeed = 10f;
     public float bulletLifeTime = 2f;
     public float calories = 10f;
+    public static Dictionary<string, int> counter = new Dictionary<string, int>();
     protected Rigidbody2D rb;
     protected float lifeTime = 0;
 
@@ -24,6 +25,22 @@ public abstract class BulletBase : MonoBehaviour
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        //Debug.Log("BulletBase Start");
+        string stringType = foodType.ToString().ToLower();
+
+        if (counter.ContainsKey(stringType))
+        {
+            //Debug.Log("Counter contains key: " + stringType);
+            //Debug.Log("Incrementing key: " + counter[stringType]);
+            counter[stringType] += 1;
+        }
+        else
+        {
+            //Debug.Log("Counter does not contain key: " + stringType);
+            //Debug.Log("Adding key: " + stringType);
+            counter[stringType] = 1;
+        }
     }
 
     protected virtual void Update()

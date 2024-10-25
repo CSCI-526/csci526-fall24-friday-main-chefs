@@ -12,6 +12,7 @@ public class HealthController : MonoBehaviour
     public float currentHealth = 50f;
 
     public float maxSizeUpperBound = 7.5f;
+    public float maxSizeLowerBound = 1.5f;
     public float maxSize = 1.5f; // Maximum scale of the player
     public float minSize = 0.5f; // Minimum scale of the player
     public float maxSizeDecreaseRate = 0.5f; // used for increasing max size with respect to time
@@ -82,7 +83,7 @@ public class HealthController : MonoBehaviour
         {
             maxSize = maxSizeUpperBound;
         }
-        if(maxSize > 1.5f)
+        if(maxSize > maxSizeLowerBound)
         {
             maxSize -= maxSizeDecreaseRate * Time.deltaTime; 
             //float current = maxSize;

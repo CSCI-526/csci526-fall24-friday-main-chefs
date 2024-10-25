@@ -6,40 +6,35 @@ using UnityEngine;
 public class ChangeBullet : MonoBehaviour
 {
     public string[] bulletName = {"Regular", "Mentos", "Soda" };
+    public float[] shootSpeed;
     public GameObject[] bullets;
     public TextMeshProUGUI bulletInfoText;
     private ShootController shootController;
+    private int index = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         shootController = GetComponent<ShootController>();
-        shootController.bullet = bullets[0];
-        bulletInfoText.text = "Using " + bulletName[0] + " bullet";
-        shootController.SetShootSpeed(15);
+        shootController.bullet = bullets[index];
+        bulletInfoText.text = "Using " + bulletName[index] + " bullet";
+        shootController.SetShootSpeed(5);
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Get input from keyboard to change the bullet
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        // Get input from mouse right click to change the bullet
+        if (Input.GetMouseButtonDown(1))
         {
-            shootController.bullet = bullets[0];
-            bulletInfoText.text = "Using " + bulletName[0] + " bullet";
-            shootController.SetShootSpeed(15);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            shootController.bullet = bullets[1];
-            bulletInfoText.text = "Using " + bulletName[1] + " bullet";
-            shootController.SetShootSpeed(3);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            shootController.bullet = bullets[2];
-            bulletInfoText.text = "Using " + bulletName[2] + " bullet";
-            shootController.SetShootSpeed(10);
+            index++;
+            if (index >= bullets.Length)
+            {
+                index = 0;
+            }
+            shootController.bullet = bullets[index];
+            bulletInfoText.text = "Using " + bulletName[index] + " bullet";
+            shootController.SetShootSpeed(shootSpeed[index]);
         }
     }
 }

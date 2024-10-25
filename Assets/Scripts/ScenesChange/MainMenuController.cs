@@ -20,12 +20,23 @@ public class MainMenuController : MonoBehaviour
     public void StartGame()
     {
         Debug.Log("Start Game");
-        SceneManager.LoadScene("BattleField");
+        SceneManager.LoadScene("Level1");
     }
 
     public void Instruction()
     {
         Debug.Log("Instruction");
         SceneManager.LoadScene("Instruction");
+    }
+
+    public void Levels()
+    {
+        SceneManager.LoadScene("LevelChoose");
+    }
+
+    public void ChooseLevel(string level)
+    {
+        Debug.Log("Choose Level");
+        SceneManager.LoadScene(level);
     }
 }
