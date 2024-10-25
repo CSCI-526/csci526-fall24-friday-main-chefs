@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
+    public bool isJumping = false;
     public float speed = 5.0f;
     public float jumpDuration = 3.0f;
     public float jumpDistance = 10.0f;
-    public bool isJumping = false;
     public AnimationCurveAsset jumpCurveAsset;
 
     private float jumpStartTime;
@@ -32,18 +32,19 @@ public class MovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        if (movement.sqrMagnitude > 0.01f)
+        if (!isJumping)
         {
-            rb.velocity = movement * speed;
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Jump();
+            }
+            Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            if (movement.sqrMagnitude > 0.01f)
+            {
+                rb.velocity = movement * speed;
+            }
         }
-
-        if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
-        {
-            Jump();
-        }
-
-        if (isJumping)
+        else
         {
             JumpMotion();
         }
