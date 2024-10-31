@@ -33,8 +33,8 @@ public class ShootController : MonoBehaviour
         }
 
         bulletSpawnRadius = bulletSpawnDistance + transform.localScale.x / 2 + bullet.transform.localScale.x / 2;
-        if(isPlayer && Input.GetMouseButton(0) && timeCount > shootTime)
-        {            
+        if(isPlayer && Input.GetMouseButtonDown(0) && timeCount > shootTime)
+        {
             float angle = Mathf.Atan2(Input.mousePosition.y - Screen.height / 2, Input.mousePosition.x - Screen.width / 2);
             Vector2 bulletSpawn = new Vector2(transform.position.x, transform.position.y);
             bulletSpawn.x += Mathf.Cos(angle) * bulletSpawnRadius;
