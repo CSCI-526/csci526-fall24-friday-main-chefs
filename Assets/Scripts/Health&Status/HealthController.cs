@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro; 
+
+
 
 public class HealthController : MonoBehaviour
 {
@@ -21,12 +24,15 @@ public class HealthController : MonoBehaviour
 
     public healthBar healthBar;  
     private bool isDead; 
+    public TextMeshProUGUI HealthText; // Reference to display health as a number
+
 
     // Start is called before the first frame update
     void Start()
     {
         healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(currentHealth);
+        UpdateHealthText(); 
     }
 
     // Update is called once per frame
@@ -48,7 +54,7 @@ public class HealthController : MonoBehaviour
        
         currentHealth -= healthDecreaseRate * Time.deltaTime; 
         healthBar.SetHealth(currentHealth);
-
+        UpdateHealthText();
         UpdatePlayerScale();
     }
 
@@ -75,6 +81,7 @@ public class HealthController : MonoBehaviour
         }
 
         healthBar.SetHealth(currentHealth);
+        UpdateHealthText();
     }
 
     void UpdatePlayerScale()
@@ -96,6 +103,11 @@ public class HealthController : MonoBehaviour
 
         // Update the player's scale based on current health
         transform.localScale = new Vector3 (newScale, newScale, 1);
+    }
+
+    void UpdateHealthText()
+    {
+        HealthText.text = Mathf.RoundToInt(currentHealth).ToString(); // Update text with current health
     }
 
 }
