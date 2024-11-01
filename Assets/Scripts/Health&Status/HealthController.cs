@@ -38,7 +38,7 @@ public class HealthController : MonoBehaviour
             isDead = true ;
             if(isPlayer)
             {
-                gameManager.gameOver("You lose!");
+                gameManager.gameOver("On a diet¡­ \nOh! Overdid it¡­", false);
             }
             else
             {
@@ -62,7 +62,7 @@ public class HealthController : MonoBehaviour
             isDead = true ;
             if (isPlayer)
             {
-                gameManager.gameOver("You lose!");
+                gameManager.gameOver("Overloaded!\nI¡¯ll skip dessert...", false);
             }
             else
             {

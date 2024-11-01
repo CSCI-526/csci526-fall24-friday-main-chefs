@@ -17,7 +17,7 @@ public class Level2End : MonoBehaviour
     {
         if(enemy == null)
         {
-            gameManager.gameOver("You Win!");
+            gameManager.gameOver("Thank you\nMy Powerful Stomach");
         }
     }
 }

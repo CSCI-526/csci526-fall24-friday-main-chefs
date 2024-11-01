@@ -12,10 +12,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Merge/Instruction.unity
     guid: 0fbf8aceea1e77f40b54339e7e40fad5
   - enabled: 1
-    path: Assets/Scenes/Merge/Levels/Level1.unity
+    path: Assets/Scenes/Merge/Levels/Movement.unity
     guid: 37e899e935e6acf4eba16fa03dc8a93c
   - enabled: 1
-    path: Assets/Scenes/Merge/Levels/Level2.unity
+    path: Assets/Scenes/Merge/Levels/Shooting.unity
     guid: 6d291183d10d07649ba216b4f304f679
   - enabled: 1
     path: Assets/Scenes/Merge/Levels/Level3.unity
@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Merge/LevelChoose.unity
     guid: c6dd993986e4c154796aa72a9e850a79
+  - enabled: 1
+    path: Assets/Scenes/Merge/Levels/EatingBullets.unity
+    guid: 3604d5bad26501449a2dc160fb787427
   m_configObjects: {}

@@ -25,14 +25,14 @@ public class GameManagerScript : MonoBehaviour
         
     }
 
-    public void gameOver(string text)
+    public void gameOver(string text, bool win = true)
     {
         string result;
         if (!isLog && needLog)
         {
             Debug.Log("Start to upload log data");
             Debug.Log(text);
-            if(text == "You Win!")
+            if(win)
             {
                 result = "Win";
             }

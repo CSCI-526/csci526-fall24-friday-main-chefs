@@ -164,4 +164,4 @@ MonoBehaviour:
   foodType: 0
   bulletSpeed: 7
   bulletLifeTime: 3
-  calories: 8
+  calories: 3

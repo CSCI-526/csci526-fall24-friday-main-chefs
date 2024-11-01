@@ -20,7 +20,7 @@ public class MainMenuController : MonoBehaviour
     public void StartGame()
     {
         Debug.Log("Start Game");
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("Movement");
     }
 
     public void Instruction()

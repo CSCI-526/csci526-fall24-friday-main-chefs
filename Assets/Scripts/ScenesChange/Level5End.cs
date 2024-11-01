@@ -22,7 +22,7 @@ public class Level5End : MonoBehaviour
         //Debug.Log("Collision detected");
         if (collision.gameObject.tag == "Player")
         {
-            gameManager.gameOver("You Win!");
+            gameManager.gameOver("Just as planned¡­ \nThis is my escape route!");
         }        
     }
 }
