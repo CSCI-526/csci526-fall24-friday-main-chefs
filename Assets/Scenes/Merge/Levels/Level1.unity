@@ -467,6 +467,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 379425754}
   m_CullTransparentMesh: 1
+--- !u!1 &411634439
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 411634441}
+  - component: {fileID: 411634440}
+  m_Layer: 0
+  m_Name: TimeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &411634440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411634439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc1cff9695471474c9e5dd8b9855ce32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: 
+--- !u!4 &411634441
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411634439}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &476975825
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,6 +1380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 1
   gameManager: {fileID: 1239533451}
+  logManager: {fileID: 0}
   maxHealth: 100
   currentHealth: 50
   maxSizeUpperBound: 5.5
@@ -1343,6 +1389,7 @@ MonoBehaviour:
   maxSizeDecreaseRate: 0.5
   healthDecreaseRate: 1
   healthBar: {fileID: 1629980069}
+  isLog: 0
 --- !u!114 &670233026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1385,6 +1432,7 @@ MonoBehaviour:
   - Regular
   - Mentos
   - Soda
+  shootSpeed: []
   bullets:
   - {fileID: 8854819506795147271, guid: b8b1b7ce65a013f408daa319656a29df, type: 3}
   - {fileID: 8854819506795147271, guid: 141e77ccec26c7c418f28aae86961bdf, type: 3}
@@ -3886,3 +3934,4 @@ SceneRoots:
   - {fileID: 377526642}
   - {fileID: 1239533452}
   - {fileID: 1230843737}
+  - {fileID: 411634441}

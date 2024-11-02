@@ -6,10 +6,11 @@ public class Level2End : MonoBehaviour
 {
     public GameObject enemy;
     public GameManagerScript gameManager;
+    public TimeManagerScript timeManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        timeManager = FindObjectOfType<TimeManagerScript>();
     }
 
     // Update is called once per frame
@@ -17,6 +18,7 @@ public class Level2End : MonoBehaviour
     {
         if(enemy == null)
         {
+            timeManager.StopTimer();
             gameManager.gameOver("You Win!");
         }
     }

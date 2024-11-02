@@ -6,13 +6,17 @@ public class EnemiesManager : MonoBehaviour
 {
     public GameManagerScript gameManager;
     public LogManagerScript logManager;
+    public TimeManagerScript timeManager;
+    public string sceneName;
     private bool isLog;
 
     // Start is called before the first frame update
     void Start()
     {
+        sceneName = gameObject.scene.name;
         isLog = false;
         logManager = FindObjectOfType<LogManagerScript>();
+        timeManager = FindObjectOfType<TimeManagerScript>();
     }
 
     // Update is called once per frame
@@ -25,6 +29,11 @@ public class EnemiesManager : MonoBehaviour
             {
                 Debug.Log("Start to upload log data");
                 logManager.ExternalUpload(BulletBase.counter, "Win");
+                timeManager.StopTimer();
+                if (sceneName == "Level5")
+                {
+                    timeManager.ExternalUpload(TimeManagerScript.timeDict);
+                }
                 isLog = true;
             }
             gameManager.gameOver("You Win!");
