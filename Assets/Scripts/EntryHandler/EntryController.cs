@@ -21,7 +21,7 @@ public class EntryController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("PlayerSprite"))
         {
             enemy.SetActive(true);
         }
