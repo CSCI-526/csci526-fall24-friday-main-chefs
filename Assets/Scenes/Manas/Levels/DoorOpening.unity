@@ -3492,6 +3492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   door: {fileID: 517222073}
   isSteppedOn: 0
+  healthThreshold: 70
 --- !u!61 &1952454355
 BoxCollider2D:
   m_ObjectHideFlags: 0
