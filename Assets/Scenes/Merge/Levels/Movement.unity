@@ -1263,6 +1263,7 @@ MonoBehaviour:
   maxSizeDecreaseRate: 0.5
   healthDecreaseRate: 1
   healthBar: {fileID: 1629980069}
+  healthNum: {fileID: 0}
 --- !u!114 &670233026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3154,7 +3155,7 @@ PrefabInstance:
       objectReference: {fileID: 1239533451}
     - target: {fileID: 531273991239515056, guid: 09d1285f2e196aa40af3259c094b2b92, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: EatingBullets
+      value: ManageOwn
       objectReference: {fileID: 0}
     - target: {fileID: 1471082216911908306, guid: 09d1285f2e196aa40af3259c094b2b92, type: 3}
       propertyPath: m_Name
@@ -3248,6 +3249,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1239533451}
+    - target: {fileID: 5962543826065116024, guid: 09d1285f2e196aa40af3259c094b2b92, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5962543826065116024, guid: 09d1285f2e196aa40af3259c094b2b92, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1239533451}
+    - target: {fileID: 5962543826065116024, guid: 09d1285f2e196aa40af3259c094b2b92, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: gameContinue
+      objectReference: {fileID: 0}
     - target: {fileID: 6417523043012900776, guid: 09d1285f2e196aa40af3259c094b2b92, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

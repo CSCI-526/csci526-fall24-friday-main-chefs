@@ -46,6 +46,12 @@ public abstract class BulletBase : MonoBehaviour
     protected virtual void Update()
     {
         // Check if the bullet should be destroyed based on its lifetime
+        if(bulletLifeTime < 0)
+        {
+            // Infinity
+            return;
+        }
+
         lifeTime += Time.deltaTime;
         // Debug.Log(lifeTime);
         if (lifeTime > bulletLifeTime)

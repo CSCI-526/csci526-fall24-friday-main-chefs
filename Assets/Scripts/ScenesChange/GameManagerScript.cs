@@ -13,6 +13,7 @@ public class GameManagerScript : MonoBehaviour
     public LogManagerScript logManager;
     public bool needLog = false;
     private bool isLog = false;
+    private bool isPaused = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +23,18 @@ public class GameManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //get input from keyboard esc
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isPaused)
+            {
+                gameContinue();
+            }
+            else
+            {
+                gamePause();
+            }
+        }
     }
 
     public void gameOver(string text, bool win = true)
@@ -47,7 +59,10 @@ public class GameManagerScript : MonoBehaviour
         crosshair.SetActive(false);
         Cursor.visible = true;
         gameOverUI.transform.Find("Information").GetComponent<TextMeshProUGUI>().text = text;
+        gameOverUI.transform.Find("WinOrLose").GetComponent<TextMeshProUGUI>().text = win ? "You Win!" : "You Lose!";        
         gameOverUI.SetActive(true);
+        gameOverUI.transform.Find("NextButton").gameObject.SetActive(win);
+        gameOverUI.transform.Find("Continue").gameObject.SetActive(false);
         Time.timeScale = 0;
     }
 
@@ -71,9 +86,28 @@ public class GameManagerScript : MonoBehaviour
         //Debug.Log("MainMenu");
     }
 
-    public void quit()
+    public void gamePause()
     {
-        Debug.Log("Quit");
-        Application.Quit();
+        crosshair.SetActive(false);
+        Cursor.visible = true;
+        gameOverUI.SetActive(true);
+        gameOverUI.transform.Find("WinOrLose").GetComponent<TextMeshProUGUI>().text = "Pause";
+        gameOverUI.transform.Find("Information").GetComponent<TextMeshProUGUI>().text = "Take a rest?";
+        gameOverUI.transform.Find("NextButton").gameObject.SetActive(false);
+        Time.timeScale = 0;
     }
+
+    public void gameContinue()
+    {
+        crosshair.SetActive(true);
+        Cursor.visible = false;
+        gameOverUI.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    //public void quit()
+    //{
+    //    Debug.Log("Quit");
+    //    Application.Quit();
+    //}
 }

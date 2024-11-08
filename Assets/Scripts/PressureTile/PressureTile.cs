@@ -4,46 +4,125 @@ using UnityEngine;
 
 public class PressureTile : MonoBehaviour
 {
-    // Start is called before the first frame update
     public DoorHandler door; 
-    public bool isSteppedOn ; 
-    private SpriteRenderer spriteRenderer; 
+    public bool isSteppedOn;
+    private bool isActivated = false; // New flag to track if tile has been activated
+    private SpriteRenderer spriteRenderer;
+    private Color originalColor;
+    private HealthController playerHealth; 
+
+    private TextMesh numberText;
+    private GameObject textObject;
+
+    [SerializeField] private float healthThreshold = 70f;
 
     void Start()
     {
-        //Setting initial color of the tile to red , we can change that anytime.
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.color = Color.red; 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        if (spriteRenderer == null)
+        {
+            Debug.LogError("No SpriteRenderer found on this object!");
+            return;
+        }
         
+        originalColor = Color.red;
+        spriteRenderer.color = originalColor;
+        Debug.Log("Initial color set to red");
+        
+        GameObject player = GameObject.FindGameObjectWithTag("PlayerSprite");
+        if (player != null)
+        {
+            playerHealth = player.GetComponent<HealthController>();
+            Debug.Log("Found player object with health controller");
+            Debug.Log($"Initial player health: {playerHealth.currentHealth}/{playerHealth.maxHealth}");
+        }
+        else
+        {
+            Debug.LogError("No object with 'Player' tag found in the scene!");
+        }
+
+        CreateText();
     }
 
-    // Check if the player steps on the tile
-     private void OnTriggerEnter2D(Collider2D other)
+    void CreateText()
     {
-        if (other.CompareTag("PlayerSprite")) 
+        textObject = new GameObject("NumberText");
+        textObject.transform.parent = transform;
+        textObject.transform.localPosition = new Vector3(0, 0, -1);
+        
+        numberText = textObject.AddComponent<TextMesh>();
+        numberText.text = "70";
+        numberText.fontSize = 48;
+        numberText.alignment = TextAlignment.Center;
+        numberText.anchor = TextAnchor.MiddleCenter;
+        numberText.color = Color.black;
+        
+        textObject.transform.localScale = new Vector3(0.1f, 0.1f, 1);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!isActivated && collision.gameObject.CompareTag("PlayerSprite"))
         {
-            isSteppedOn = true;
-            door.OpenDoor(); // Call the door's open method
-            spriteRenderer.color = Color.green; // Change color to green when activated
-            Debug.Log("Pressure tile activated, door opening.");
+            CheckAndActivateTile();
         }
     }
 
-    // Check if the player leaves the tile
-   /* private void OnTriggerExit2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.CompareTag("PlayerSprite")) 
+        if (!isActivated && collision.CompareTag("PlayerSprite"))
         {
-            isSteppedOn = false;
-            door.CloseDoor(); // Call the door's close method
-            spriteRenderer.color = Color.red; // Change color back to red when deactivated
-            Debug.Log("Pressure tile deactivated, door closing.");
+            CheckAndActivateTile();
         }
-    }*/
+    }
 
+    private void CheckAndActivateTile()
+    {
+        if (playerHealth != null)
+        {
+            float healthPercentage = (playerHealth.currentHealth / playerHealth.maxHealth) * 100f;
+            Debug.Log($"Current health percentage: {healthPercentage}%");
+            
+            if (healthPercentage >= healthThreshold)
+            {
+                ActivateTile();
+            }
+            else
+            {
+                Debug.Log($"Health not at threshold. Current: {healthPercentage}%, Required: {healthThreshold}%");
+            }
+        }
+        else
+        {
+            Debug.LogError("PlayerHealth is null!");
+        }
+    }
+
+    private void ActivateTile()
+    {
+        isActivated = true;
+        isSteppedOn = true;
+        spriteRenderer.color = Color.green;
+        door.OpenDoor();
+        Debug.Log("Tile permanently activated, door opening.");
+    }
+
+    // Modified exit handlers to check isActivated flag
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("PlayerSprite") && !isActivated)
+        {
+            spriteRenderer.color = originalColor;
+            Debug.Log("Collision ended - not activated, color reset to red");
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("PlayerSprite") && !isActivated)
+        {
+            spriteRenderer.color = originalColor;
+            Debug.Log("Trigger ended - not activated, color reset to red");
+        }
+    }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -19,7 +20,9 @@ public class HealthController : MonoBehaviour
 
     public float healthDecreaseRate = 0.5f; // used for decreasing health with respect to time
 
-    public healthBar healthBar;  
+    public healthBar healthBar;
+
+    public TextMeshProUGUI healthNum;
     private bool isDead; 
 
     // Start is called before the first frame update
@@ -27,6 +30,10 @@ public class HealthController : MonoBehaviour
     {
         healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(currentHealth);
+        if(isPlayer) 
+        {
+            healthNum.text = ((int)currentHealth).ToString();
+        }        
     }
 
     // Update is called once per frame
@@ -48,6 +55,10 @@ public class HealthController : MonoBehaviour
        
         currentHealth -= healthDecreaseRate * Time.deltaTime; 
         healthBar.SetHealth(currentHealth);
+        if (isPlayer)
+        {
+            healthNum.text = ((int)currentHealth).ToString();
+        }
 
         UpdatePlayerScale();
     }
