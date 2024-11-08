@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 8944535215953879464}
   - component: {fileID: 5933957896596029643}
   - component: {fileID: 871326374949230835}
-  - component: {fileID: 5773793906724531235}
+  - component: {fileID: 3849260019931955418}
   m_Layer: 6
-  m_Name: EnemyBullet
-  m_TagString: Enemy
+  m_Name: MentosL5
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,9 +75,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.254717, g: 0.012985573, b: 0, a: 1}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Color: {r: 0.6748347, g: 0.93185824, b: 0.93710685, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -149,7 +149,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5773793906724531235
+--- !u!114 &3849260019931955418
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,9 +158,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8854819506795147271}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43290beedd11c5847b795df97e90c19a, type: 3}
+  m_Script: {fileID: 11500000, guid: 6185e266a848be84a9ee96c45df3724d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foodType: 1
   bulletSpeed: 8
-  bulletLifeTime: 2
-  calories: 10
+  bulletLifeTime: 1
+  calories: 5

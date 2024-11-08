@@ -9,9 +9,27 @@ EditorBuildSettings:
     path: Assets/Scenes/Merge/MainMenu.unity
     guid: 906706e9096a7a947b4d45ba6d63f7a0
   - enabled: 1
-    path: Assets/Scenes/Merge/BattleField.unity
-    guid: 298251bec447c964ca93607be5053ea8
-  - enabled: 1
     path: Assets/Scenes/Merge/Instruction.unity
     guid: 0fbf8aceea1e77f40b54339e7e40fad5
+  - enabled: 1
+    path: Assets/Scenes/Merge/Levels/Movement.unity
+    guid: 37e899e935e6acf4eba16fa03dc8a93c
+  - enabled: 1
+    path: Assets/Scenes/Merge/Levels/CombEffect.unity
+    guid: ffa2d2af7df2a304f8d105c1ab911a93
+  - enabled: 1
+    path: Assets/Scenes/Merge/Levels/GatePuzzle.unity
+    guid: 9b0d8f15f72571d41b7ae3c47de14a4c
+  - enabled: 1
+    path: Assets/Scenes/Merge/LevelChoose.unity
+    guid: c6dd993986e4c154796aa72a9e850a79
+  - enabled: 1
+    path: Assets/Scenes/Merge/Levels/BodysizeCtrl.unity
+    guid: 7795c12568c2bbd4ebb89b22b5d20689
+  - enabled: 1
+    path: Assets/Scenes/Merge/Levels/ManageOwn.unity
+    guid: 08c6db1f3caeca2439b1c500b0c721e9
+  - enabled: 1
+    path: Assets/Scenes/Merge/Levels/ManageEnemy.unity
+    guid: 705fa3315d6fdca43a58734db9575f96
   m_configObjects: {}

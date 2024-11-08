@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -12,13 +13,16 @@ public class HealthController : MonoBehaviour
     public float currentHealth = 50f;
 
     public float maxSizeUpperBound = 7.5f;
+    public float maxSizeLowerBound = 1.5f;
     public float maxSize = 1.5f; // Maximum scale of the player
     public float minSize = 0.5f; // Minimum scale of the player
     public float maxSizeDecreaseRate = 0.5f; // used for increasing max size with respect to time
 
     public float healthDecreaseRate = 0.5f; // used for decreasing health with respect to time
 
-    public healthBar healthBar;  
+    public healthBar healthBar;
+
+    public TextMeshProUGUI healthNum;
     private bool isDead; 
 
     // Start is called before the first frame update
@@ -26,6 +30,10 @@ public class HealthController : MonoBehaviour
     {
         healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(currentHealth);
+        if(isPlayer) 
+        {
+            healthNum.text = ((int)currentHealth).ToString();
+        }        
     }
 
     // Update is called once per frame
@@ -37,7 +45,7 @@ public class HealthController : MonoBehaviour
             isDead = true ;
             if(isPlayer)
             {
-                gameManager.gameOver("You lose!");
+                gameManager.gameOver("On a diet¡­ \nOh! Overdid it¡­", false);
             }
             else
             {
@@ -47,6 +55,10 @@ public class HealthController : MonoBehaviour
        
         currentHealth -= healthDecreaseRate * Time.deltaTime; 
         healthBar.SetHealth(currentHealth);
+        if (isPlayer)
+        {
+            healthNum.text = ((int)currentHealth).ToString();
+        }
 
         UpdatePlayerScale();
     }
@@ -61,7 +73,7 @@ public class HealthController : MonoBehaviour
             isDead = true ;
             if (isPlayer)
             {
-                gameManager.gameOver("You lose!");
+                gameManager.gameOver("Overloaded!\nI¡¯ll skip dessert...", false);
             }
             else
             {
@@ -82,7 +94,7 @@ public class HealthController : MonoBehaviour
         {
             maxSize = maxSizeUpperBound;
         }
-        if(maxSize > 1.5f)
+        if(maxSize > maxSizeLowerBound)
         {
             maxSize -= maxSizeDecreaseRate * Time.deltaTime; 
             //float current = maxSize;
