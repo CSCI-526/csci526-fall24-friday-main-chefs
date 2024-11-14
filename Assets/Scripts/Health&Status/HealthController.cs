@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -25,6 +26,8 @@ public class HealthController : MonoBehaviour
     public TextMeshProUGUI healthNum;
     private bool isDead; 
 
+    private SpriteFlash spriteFlash ; // Reference to SpriteFlash script
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +37,8 @@ public class HealthController : MonoBehaviour
         {
             healthNum.text = ((int)currentHealth).ToString();
         }        
+
+        spriteFlash = GetComponent<SpriteFlash>(); 
     }
 
     // Update is called once per frame
@@ -45,7 +50,7 @@ public class HealthController : MonoBehaviour
             isDead = true ;
             if(isPlayer)
             {
-                gameManager.gameOver("On a diet¡­ \nOh! Overdid it¡­", false);
+                gameManager.gameOver("On a dietï¿½ï¿½ \nOh! Overdid itï¿½ï¿½", false);
             }
             else
             {
@@ -61,6 +66,7 @@ public class HealthController : MonoBehaviour
         }
 
         UpdatePlayerScale();
+        CheckForLowHealthFade(); // Check if health is low for fade effect
     }
 
     public void EatBullets(float calories)
@@ -73,7 +79,7 @@ public class HealthController : MonoBehaviour
             isDead = true ;
             if (isPlayer)
             {
-                gameManager.gameOver("Overloaded!\nI¡¯ll skip dessert...", false);
+                gameManager.gameOver("Overloaded!\nIï¿½ï¿½ll skip dessert...", false);
             }
             else
             {
@@ -107,6 +113,18 @@ public class HealthController : MonoBehaviour
 
         // Update the player's scale based on current health
         transform.localScale = new Vector3 (newScale, newScale, 1);
+    }
+
+    private void CheckForLowHealthFade()
+    {
+        if (currentHealth <= 25 && currentHealth > 0)
+    {
+        // Trigger fade effect if not already fading
+        if (!isDead)
+        {
+            StartCoroutine(spriteFlash.FlashCoroutine(1.5f, new Color(1f, 1f, 1f, 0.2f), 3)); // Fading effect
+        }
+    }
     }
 
 }
