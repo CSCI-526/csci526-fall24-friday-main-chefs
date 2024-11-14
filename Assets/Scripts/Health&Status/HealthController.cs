@@ -121,7 +121,7 @@ public class HealthController : MonoBehaviour
         if ((currentHealth <= 25 || currentHealth >= 75) && !isFading)
         {
             isFading = true;
-            spriteFlash.StartFading(1.5f, new Color(1f, 1f, 1f, 0.2f), 3); // Start fading effect
+            spriteFlash.StartFading(1.5f, 0.2f, 3); // Fading effect with transparency only
         }
         else if (currentHealth > 25 && currentHealth < 75 && isFading)
         {
@@ -129,6 +129,7 @@ public class HealthController : MonoBehaviour
             spriteFlash.ResetColor(); // Reset color back to original when in safe range
         }
     }
+
 
 
 }

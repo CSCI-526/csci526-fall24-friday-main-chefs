@@ -13,10 +13,10 @@ public class SpriteFlash : MonoBehaviour
         originalColor = _spriteRenderer.color; // Store the original color
     }
 
-    public IEnumerator FlashCoroutine(float flashDuration, Color flashColor, int numberOfFlashes)
+    public IEnumerator FlashCoroutine(float flashDuration, float targetAlpha, int numberOfFlashes)
     {
         isFading = true;
-        Color startColor = _spriteRenderer.color;
+        Color startColor = originalColor;
         float elapsedFlashTime = 0;
 
         for (int i = 0; i < numberOfFlashes; i++)
@@ -26,7 +26,8 @@ public class SpriteFlash : MonoBehaviour
             {
                 elapsedFlashTime += Time.deltaTime;
                 float pingPong = Mathf.PingPong(elapsedFlashTime / flashDuration * 2, 1);
-                _spriteRenderer.color = Color.Lerp(startColor, flashColor, pingPong);
+                float alpha = Mathf.Lerp(1f, targetAlpha, pingPong);
+                _spriteRenderer.color = new Color(startColor.r, startColor.g, startColor.b, alpha);
                 yield return null;
             }
         }
@@ -35,11 +36,11 @@ public class SpriteFlash : MonoBehaviour
         _spriteRenderer.color = originalColor; // Reset to original color after fading
     }
 
-    public void StartFading(float flashDuration, Color flashColor, int numberOfFlashes)
+    public void StartFading(float flashDuration, float targetAlpha, int numberOfFlashes)
     {
         if (!isFading)
         {
-            StartCoroutine(FlashCoroutine(flashDuration, flashColor, numberOfFlashes));
+            StartCoroutine(FlashCoroutine(flashDuration, targetAlpha, numberOfFlashes));
         }
     }
 
