@@ -4,17 +4,20 @@ using UnityEngine;
 public class SpriteFlash : MonoBehaviour
 {
     private SpriteRenderer _spriteRenderer;
+    private Color originalColor;
+    private bool isFading = false;
 
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        originalColor = _spriteRenderer.color; // Store the original color
     }
 
     public IEnumerator FlashCoroutine(float flashDuration, Color flashColor, int numberOfFlashes)
     {
+        isFading = true;
         Color startColor = _spriteRenderer.color;
         float elapsedFlashTime = 0;
-        float elapsedFlashPercentage = 0;
 
         for (int i = 0; i < numberOfFlashes; i++)
         {
@@ -22,14 +25,28 @@ public class SpriteFlash : MonoBehaviour
             while (elapsedFlashTime < flashDuration)
             {
                 elapsedFlashTime += Time.deltaTime;
-                elapsedFlashPercentage = elapsedFlashTime / flashDuration;
-                float alpha = Mathf.Lerp(startColor.a, flashColor.a, Mathf.PingPong(elapsedFlashPercentage * 2, 1));
-                _spriteRenderer.color = new Color(startColor.r, startColor.g, startColor.b, alpha);
+                float pingPong = Mathf.PingPong(elapsedFlashTime / flashDuration * 2, 1);
+                _spriteRenderer.color = Color.Lerp(startColor, flashColor, pingPong);
                 yield return null;
             }
         }
+        
+        isFading = false;
+        _spriteRenderer.color = originalColor; // Reset to original color after fading
+    }
 
-        // Reset color to the original state after flashing
-        _spriteRenderer.color = startColor;
+    public void StartFading(float flashDuration, Color flashColor, int numberOfFlashes)
+    {
+        if (!isFading)
+        {
+            StartCoroutine(FlashCoroutine(flashDuration, flashColor, numberOfFlashes));
+        }
+    }
+
+    public void ResetColor()
+    {
+        StopAllCoroutines();
+        _spriteRenderer.color = originalColor; // Reset to original color
+        isFading = false;
     }
 }

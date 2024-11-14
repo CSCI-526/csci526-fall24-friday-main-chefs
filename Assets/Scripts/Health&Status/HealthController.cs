@@ -27,6 +27,7 @@ public class HealthController : MonoBehaviour
     private bool isDead; 
 
     private SpriteFlash spriteFlash ; // Reference to SpriteFlash script
+    private bool isFading = false ; 
 
     // Start is called before the first frame update
     void Start()
@@ -66,7 +67,7 @@ public class HealthController : MonoBehaviour
         }
 
         UpdatePlayerScale();
-        CheckForLowHealthFade(); // Check if health is low for fade effect
+        CheckForHealthFade(); // Check if health is low for fade effect
     }
 
     public void EatBullets(float calories)
@@ -115,16 +116,19 @@ public class HealthController : MonoBehaviour
         transform.localScale = new Vector3 (newScale, newScale, 1);
     }
 
-    private void CheckForLowHealthFade()
+   private void CheckForHealthFade()
     {
-        if (currentHealth <= 25 && currentHealth > 0)
-    {
-        // Trigger fade effect if not already fading
-        if (!isDead)
+        if ((currentHealth <= 25 || currentHealth >= 75) && !isFading)
         {
-            StartCoroutine(spriteFlash.FlashCoroutine(1.5f, new Color(1f, 1f, 1f, 0.2f), 3)); // Fading effect
+            isFading = true;
+            spriteFlash.StartFading(1.5f, new Color(1f, 1f, 1f, 0.2f), 3); // Start fading effect
+        }
+        else if (currentHealth > 25 && currentHealth < 75 && isFading)
+        {
+            isFading = false;
+            spriteFlash.ResetColor(); // Reset color back to original when in safe range
         }
     }
-    }
+
 
 }
