@@ -29,7 +29,7 @@ public class PressureTile : MonoBehaviour
         spriteRenderer.color = originalColor;
         Debug.Log("Initial color set to red");
         
-        GameObject player = GameObject.FindGameObjectWithTag("PlayerSprite");
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
             playerHealth = player.GetComponent<HealthController>();
@@ -51,7 +51,7 @@ public class PressureTile : MonoBehaviour
         textObject.transform.localPosition = new Vector3(0, 0, -1);
         
         numberText = textObject.AddComponent<TextMesh>();
-        numberText.text = "70";
+        numberText.text = healthThreshold.ToString() + "%";
         numberText.fontSize = 48;
         numberText.alignment = TextAlignment.Center;
         numberText.anchor = TextAnchor.MiddleCenter;
@@ -62,7 +62,7 @@ public class PressureTile : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!isActivated && collision.gameObject.CompareTag("PlayerSprite"))
+        if (!isActivated && collision.gameObject.CompareTag("Player"))
         {
             CheckAndActivateTile();
         }
@@ -70,7 +70,7 @@ public class PressureTile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!isActivated && collision.CompareTag("PlayerSprite"))
+        if (!isActivated && collision.CompareTag("Player"))
         {
             CheckAndActivateTile();
         }
@@ -110,7 +110,7 @@ public class PressureTile : MonoBehaviour
     // Modified exit handlers to check isActivated flag
     void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("PlayerSprite") && !isActivated)
+        if (collision.gameObject.CompareTag("Player") && !isActivated)
         {
             spriteRenderer.color = originalColor;
             Debug.Log("Collision ended - not activated, color reset to red");
@@ -119,7 +119,7 @@ public class PressureTile : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("PlayerSprite") && !isActivated)
+        if (collision.CompareTag("Player") && !isActivated)
         {
             spriteRenderer.color = originalColor;
             Debug.Log("Trigger ended - not activated, color reset to red");

@@ -16,12 +16,12 @@ public class CollisionController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // If the object collides with an enemy or player, apply damage accordingly
-        if (collision.gameObject.tag == "Enemy" && healthController.isPlayer)
+        if (collision.gameObject.tag == "EnemyBullet" && healthController.isPlayer)
         {
             healthController.EatBullets(collision.gameObject.GetComponent<BulletBase>().calories);
             statusController.SetStatusCounter(collision.gameObject.GetComponent<BulletBase>().foodType, 5);
         }
-        else if (collision.gameObject.tag == "Player" && !healthController.isPlayer)
+        else if (collision.gameObject.tag == "PlayerBullet" && !healthController.isPlayer)
         { 
             healthController.EatBullets(collision.gameObject.GetComponent<BulletBase>().calories);
             statusController.SetStatusCounter(collision.gameObject.GetComponent<BulletBase>().foodType, 5);

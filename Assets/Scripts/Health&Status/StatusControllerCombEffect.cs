@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class StatusControllerCombEffect : MonoBehaviour
 {
+    public L1SceneController sceneController;
     public StatusBar statusBar;
     public HealthController healthController;
     public GameObject block1;
-    public GameObject block2;
     private bool opened = false;
 
     private Dictionary<BulletBase.FoodType, float> statusCount = new Dictionary<BulletBase.FoodType, float>
@@ -31,12 +31,13 @@ public class StatusControllerCombEffect : MonoBehaviour
             if(!opened)
             {
                 block1.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
-                block2.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
                 //give block a velocity
 
                 block1.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 5);
-                block2.GetComponent<Rigidbody2D>().velocity = new Vector2(5, 0);
-            }            
+
+                opened = true;                               
+            }
+            sceneController.openGate();
             // Boom (^ ; w ; ^)
             statusCount[BulletBase.FoodType.Mentos] = 0;
             statusCount[BulletBase.FoodType.Soda] = 0;

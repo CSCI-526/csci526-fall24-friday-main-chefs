@@ -8,8 +8,8 @@ public class L5PuzzleGate : MonoBehaviour
     public GameObject lowerGate;
     public float upperPos;
     public float lowerPos;
-    private bool gateOpen = false;
-    private bool objectInside = false; 
+    public bool gateOpen = false;
+    public bool objectInside = false; 
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +24,9 @@ public class L5PuzzleGate : MonoBehaviour
 
     public void openGate()
     {
+        Debug.Log("Opening gate");
+        Debug.Log("Gate open: " + gateOpen);
+        Debug.Log("Object inside: " + objectInside);
         if (!gateOpen && objectInside)
         {
             upperGate.transform.position = new Vector3(upperGate.transform.position.x, upperPos, upperGate.transform.position.z);

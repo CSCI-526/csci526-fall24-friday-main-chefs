@@ -57,7 +57,7 @@ public class HealthController : MonoBehaviour
         healthBar.SetHealth(currentHealth);
         if (isPlayer)
         {
-            healthNum.text = ((int)currentHealth).ToString();
+            healthNum.text = ((int)currentHealth).ToString()+"%";
         }
 
         UpdatePlayerScale();

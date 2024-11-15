@@ -10,6 +10,8 @@ public class BulletRespawn : MonoBehaviour
     public Vector3 cokePosition;
     private float mentosRespawnTime = 0f;
     private float cokeRespawnTime = 0f;
+    private GameObject mentosBullet;
+    private GameObject cokeBullet;
 
     // Start is called before the first frame update
     void Start()
@@ -20,14 +22,14 @@ public class BulletRespawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.Find("MentosCombEffect") == null && mentosRespawnTime > 5.0f)
+        if(mentosBullet == null && mentosRespawnTime > 5.0f)
         {
-            Instantiate(mentos, mentosPosition, Quaternion.identity);
+            mentosBullet = Instantiate(mentos, mentosPosition, Quaternion.identity);
             mentosRespawnTime = 0f;
         }
-        if(transform.Find("SodaCombEffect") == null && cokeRespawnTime > 5.0f)
+        if(cokeBullet == null && cokeRespawnTime > 5.0f)
         {
-            Instantiate(coke, cokePosition, Quaternion.identity);
+            cokeBullet = Instantiate(coke, cokePosition, Quaternion.identity);
             cokeRespawnTime = 0f;
         }
         mentosRespawnTime += Time.deltaTime;

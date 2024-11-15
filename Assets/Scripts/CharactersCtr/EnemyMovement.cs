@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public GameObject bullet;
     public Transform target;    
     public float radius = 10f;   
     public float topSpeedOut = 5f;

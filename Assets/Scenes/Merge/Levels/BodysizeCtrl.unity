@@ -1734,7 +1734,7 @@ MonoBehaviour:
   maxSize: 1.5
   minSize: 0.5
   maxSizeDecreaseRate: 0.5
-  healthDecreaseRate: 1
+  healthDecreaseRate: 3
   healthBar: {fileID: 1629980069}
   healthNum: {fileID: 592304983}
 --- !u!114 &670233026
