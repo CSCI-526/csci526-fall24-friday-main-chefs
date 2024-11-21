@@ -5,17 +5,17 @@ using UnityEngine;
 
 public class StatusControllerCombEffect : MonoBehaviour
 {
-    public L1SceneController sceneController;
-    public StatusBar statusBar;
-    public HealthController healthController;
     public GameObject block1;
-    private bool opened = false;
+    public StatusBar statusBar;
+    public L1SceneController sceneController;
+    public HealthController healthController;
 
+    private bool opened = false;
     private Dictionary<BulletBase.FoodType, float> statusCount = new Dictionary<BulletBase.FoodType, float>
-     {
+    {
             { BulletBase.FoodType.Mentos, 0 },
             { BulletBase.FoodType.Soda, 0 }
-     };
+    };
 
     // Start is called before the first frame update
     void Start()
@@ -28,14 +28,14 @@ public class StatusControllerCombEffect : MonoBehaviour
     {
         if (statusCount[BulletBase.FoodType.Mentos] > 0 && statusCount[BulletBase.FoodType.Soda] > 0)
         {
-            if(!opened)
+            if (!opened)
             {
                 block1.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
                 //give block a velocity
 
                 block1.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 5);
 
-                opened = true;                               
+                opened = true;
             }
             sceneController.openGate();
             // Boom (^ ; w ; ^)
@@ -55,11 +55,11 @@ public class StatusControllerCombEffect : MonoBehaviour
         }
         statusCount[foodType] = CountDownTime;
         statusBar.SetMaxCount(CountDownTime);
-        if(foodType == BulletBase.FoodType.Mentos)
+        if (foodType == BulletBase.FoodType.Mentos)
         {
             statusBar.SetFillColor(new Color(144 / 255f, 196 / 255f, 236 / 255f, 1f));
         }
-        else if(foodType == BulletBase.FoodType.Soda)
+        else if (foodType == BulletBase.FoodType.Soda)
         {
             statusBar.SetFillColor(new Color(112 / 255f, 44 / 255f, 0f, 1f));
         }
@@ -82,5 +82,14 @@ public class StatusControllerCombEffect : MonoBehaviour
                 statusBar.SetCount(statusCount[key]);
             }
         }
+    }
+
+    public float GetStatusCount(BulletBase.FoodType foodType)
+    {
+        if (statusCount.ContainsKey(foodType))
+        {
+            return statusCount[foodType];
+        }
+        return 0f;
     }
 }
