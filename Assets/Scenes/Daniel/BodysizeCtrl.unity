@@ -1601,6 +1601,7 @@ MonoBehaviour:
   maxSizeDecreaseRate: 0.5
   healthDecreaseRate: 1
   healthBar: {fileID: 1629980069}
+  healthNum: {fileID: 0}
 --- !u!114 &670233026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2002,7 +2003,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afffda1744b0e694d82853789554936f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 8854819506795147271, guid: acfc78d275803004a82a39d8fde314a7, type: 3}
   target: {fileID: 670233019}
   radius: 5
   topSpeedOut: 5
@@ -2056,6 +2056,7 @@ MonoBehaviour:
   maxSizeDecreaseRate: 0.5
   healthDecreaseRate: 1
   healthBar: {fileID: 1825250329}
+  healthNum: {fileID: 0}
 --- !u!114 &1115861894
 MonoBehaviour:
   m_ObjectHideFlags: 0

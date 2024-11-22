@@ -157,6 +157,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverUI: {fileID: 1386261210}
+  crosshair: {fileID: 0}
+  logManager: {fileID: 0}
+  needLog: 0
 --- !u!4 &356309336
 Transform:
   m_ObjectHideFlags: 0
@@ -637,7 +640,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74e7c3ec043a38e4b8af53da45ef625c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crosshair: {fileID: 1416170644}
 --- !u!114 &670233024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,8 +652,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b266b9d381dec14685d47acbf511032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  target: {fileID: 0}
   bullet: {fileID: 8854819506795147271, guid: 38aab34e71695644c908cb83ed2a9383, type: 3}
-  bulletSpawnRadius: 0.7
+  bulletSpawnDistance: 0.05
   shootSpeed: 15
 --- !u!114 &670233025
 MonoBehaviour:
@@ -665,10 +669,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 773239530d6924527996e11da3e0518f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
   gameManager: {fileID: 356309335}
   maxHealth: 100
   currentHealth: 0
+  maxSizeUpperBound: 7.5
+  maxSizeLowerBound: 1.5
+  maxSize: 1.5
+  minSize: 0.5
+  maxSizeDecreaseRate: 0.5
+  healthDecreaseRate: 0.5
   healthBar: {fileID: 2132411719}
+  healthNum: {fileID: 0}
 --- !u!1 &736581731
 GameObject:
   m_ObjectHideFlags: 0
