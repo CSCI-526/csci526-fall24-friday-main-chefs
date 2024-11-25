@@ -20,11 +20,14 @@ public class CollisionController : MonoBehaviour
         {
             healthController.EatBullets(collision.gameObject.GetComponent<BulletBase>().calories);
             statusController.SetStatusCounter(collision.gameObject.GetComponent<BulletBase>().foodType, 5);
+            Debug.Log("Get hit by enemy");
+
         }
         else if (collision.gameObject.tag == "PlayerBullet" && !healthController.isPlayer)
         { 
             healthController.EatBullets(collision.gameObject.GetComponent<BulletBase>().calories);
             statusController.SetStatusCounter(collision.gameObject.GetComponent<BulletBase>().foodType, 5);
+            Debug.Log("Get hit by player");
         }
     }
 
