@@ -10,10 +10,13 @@ public class PoisonNeedle : MonoBehaviour
     {
         // Try to get the MovementController component from the colliding object
         MovementController controller = other.GetComponent<MovementController>();
-        if (controller != null)
+        if (other.gameObject.CompareTag("Player"))
         {
-            // Trigger the reverse movement effect
-            controller.ReverseMovement(reverseDuration);
+            if (controller != null)
+            {
+                // Trigger the reverse movement effect
+                controller.ReverseMovement(reverseDuration);
+            }
         }
     }
 }
