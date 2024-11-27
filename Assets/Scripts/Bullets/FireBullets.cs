@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class FireBullets : BulletBase
 {
+    public GameObject target;
+    public float burnDuration = 3f;
+    public float burnRate = 5f;
     void Start()
     {
         // You can redefine various attributes already defined by the parent class here.
         // e.g., bulletSpeed, bulletLifeTime, calories
         foodType = FoodType.Fire;
+        target = GameObject.Find("Player");
     }
 
     // Override the SetTrajectory method
@@ -23,5 +27,10 @@ public class FireBullets : BulletBase
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
+        HealthController healthController = target.GetComponent<HealthController>();
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            healthController.burnEffect(burnDuration, burnRate);
+        }
     }
 }
