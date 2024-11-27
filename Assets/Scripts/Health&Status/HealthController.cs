@@ -23,7 +23,10 @@ public class HealthController : MonoBehaviour
     public healthBar healthBar;
 
     public TextMeshProUGUI healthNum;
-    private bool isDead; 
+    private bool isDead;
+    public bool isBurned;             // Flag to check if movement is reversed
+    private float burnTimeLeft;
+    public float temp; 
 
     // Start is called before the first frame update
     void Start()
@@ -33,19 +36,30 @@ public class HealthController : MonoBehaviour
         if(isPlayer) 
         {
             healthNum.text = ((int)currentHealth).ToString();
-        }        
+        }
+        temp = healthDecreaseRate;        
     }
 
     // Update is called once per frame
     void Update()
     {
         // Implement Collison detection here and change the health point accordingly
+        if (isBurned)
+        {
+            burnTimeLeft -= Time.deltaTime;
+            if (burnTimeLeft <= 0)
+            {
+                isBurned = false;
+                healthDecreaseRate = temp;
+            }
+        }
+
         if(currentHealth <= 0 && !isDead)
         {
             isDead = true ;
             if(isPlayer)
             {
-                gameManager.gameOver("On a diet¡­ \nOh! Overdid it¡­", false);
+                gameManager.gameOver("On a dietï¿½ï¿½ \nOh! Overdid itï¿½ï¿½", false);
             }
             else
             {
@@ -73,7 +87,7 @@ public class HealthController : MonoBehaviour
             isDead = true ;
             if (isPlayer)
             {
-                gameManager.gameOver("Overloaded!\nI¡¯ll skip dessert...", false);
+                gameManager.gameOver("Overloaded!\nIï¿½ï¿½ll skip dessert...", false);
             }
             else
             {
@@ -107,6 +121,18 @@ public class HealthController : MonoBehaviour
 
         // Update the player's scale based on current health
         transform.localScale = new Vector3 (newScale, newScale, 1);
+    }
+
+    public void burnEffect(float duration, float burnRate)
+    {
+        isBurned = true;
+        burnTimeLeft = duration;
+        healthDecreaseRate = burnRate;
+    }
+
+    public void forkEffect(float forkDamage)
+    {
+        currentHealth -= forkDamage;
     }
 
 }
