@@ -1,13 +1,13 @@
-using System.Collections;
+using System.Collections.Generic; // For List
 using UnityEngine;
 
 public class RoomController : MonoBehaviour
 {
-    public GameObject enemy; // Assign the enemy prefab in the Inspector
-    public GameObject door1; // Assign Door 1 in the Inspector
-    public GameObject door2; // Assign Door 2 in the Inspector
+    public GameObject enemy; 
+    public GameObject door1; 
+    public GameObject door2; 
 
-    private GameObject spawnedEnemy = null; // Track spawned enemy
+    private List<GameObject> spawnedEnemies = new List<GameObject>(); // Track multiple spawned enemies
     private bool roomLocked = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -15,7 +15,7 @@ public class RoomController : MonoBehaviour
         if (collision.CompareTag("Player") && !roomLocked)
         {
             LockRoom(); // Lock the room when the player enters
-            SpawnEnemy(); // Spawn one enemy
+            SpawnEnemies(); // Spawn two enemies
         }
     }
 
@@ -26,19 +26,36 @@ public class RoomController : MonoBehaviour
         door2.SetActive(true);
     }
 
-    private void SpawnEnemy()
+    private void SpawnEnemies()
     {
-        Vector2 spawnPosition = new Vector2(-10, 1); // Adjust this spawn position as needed
-        spawnedEnemy = Instantiate(enemy, spawnPosition, Quaternion.identity);
-        spawnedEnemy.SetActive(true);
+        Vector2 spawnPosition1 = new Vector2(-10, 0); // Spawn position for first enemy
+        Vector2 spawnPosition2 = new Vector2(-10, 1); // Slightly offset position for second enemy
+
+        GameObject enemy1 = Instantiate(enemy, spawnPosition1, Quaternion.identity);
+        GameObject enemy2 = Instantiate(enemy, spawnPosition2, Quaternion.identity);
+
+        spawnedEnemies.Add(enemy1);
+        spawnedEnemies.Add(enemy2);
+
+        enemy1.SetActive(true);
+        enemy2.SetActive(true);
     }
 
     private void Update()
     {
-        if (roomLocked && spawnedEnemy == null) // Check if the enemy is defeated
+        if (roomLocked && AllEnemiesDefeated()) // Check if both enemies are defeated
         {
             UnlockRoom();
         }
+    }
+
+    private bool AllEnemiesDefeated()
+    {
+        // Remove any null entries for destroyed enemies
+        spawnedEnemies.RemoveAll(enemy => enemy == null);
+
+        // If all enemies are destroyed, the list will be empty
+        return spawnedEnemies.Count == 0;
     }
 
     private void UnlockRoom()
