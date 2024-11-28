@@ -5,6 +5,8 @@ using UnityEngine;
 public class Fork : MonoBehaviour
 {
     public float forkDamage = 15;
+    public TutorialPassManager tutorialPassManager;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Try to get the HealthController component from the colliding object
@@ -15,7 +17,7 @@ public class Fork : MonoBehaviour
             {
                 // Trigger the reverse movement effect
                 controller.forkEffect(forkDamage);
-                FindObjectOfType<WinConditionManager>().TouchedFork();
+                tutorialPassManager.TouchedFork();
             }
         }
     }

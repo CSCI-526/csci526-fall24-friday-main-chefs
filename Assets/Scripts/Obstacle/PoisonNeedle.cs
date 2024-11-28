@@ -5,6 +5,7 @@ using UnityEngine;
 public class PoisonNeedle : MonoBehaviour
 {
     public float reverseDuration = 5f;          // Duration of the reverse effect in seconds
+    public TutorialPassManager tutorialPassManager;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -16,7 +17,7 @@ public class PoisonNeedle : MonoBehaviour
             {
                 // Trigger the reverse movement effect
                 controller.ReverseMovement(reverseDuration);
-                FindObjectOfType<WinConditionManager>().TouchedPoison();
+                tutorialPassManager.TouchedPoison();
             }
         }
     }
