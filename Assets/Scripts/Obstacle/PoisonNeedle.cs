@@ -16,6 +16,7 @@ public class PoisonNeedle : MonoBehaviour
             {
                 // Trigger the reverse movement effect
                 controller.ReverseMovement(reverseDuration);
+                FindObjectOfType<WinConditionManager>().TouchedPoison();
             }
         }
     }

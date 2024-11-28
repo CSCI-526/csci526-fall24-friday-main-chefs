@@ -15,6 +15,7 @@ public class Fork : MonoBehaviour
             {
                 // Trigger the reverse movement effect
                 controller.forkEffect(forkDamage);
+                FindObjectOfType<WinConditionManager>().TouchedFork();
             }
         }
     }
