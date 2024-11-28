@@ -134,21 +134,6 @@ public class HealthController : MonoBehaviour
     public void forkEffect(float forkDamage)
     {
         currentHealth -= forkDamage;
-        // currentHealth = Mathf.Max(currentHealth, 0); 
-        
-        // if (currentHealth <= 0 && !isDead)
-        // {
-        //     isDead = true;
-        //     if (isPlayer)
-        //     {
-        //         Debug.Log("Death");
-        //         gameManager.gameOver("Forked to death!", false); 
-        //     }
-        //     else
-        //     {
-        //         Destroy(gameObject);
-        //     }
-        //}
     }
 
 }
