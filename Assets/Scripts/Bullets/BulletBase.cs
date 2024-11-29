@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class BulletBase : MonoBehaviour
 {
-    public enum FoodType { Regular, Mentos, Soda }; // Define different food types
+    public enum FoodType { Regular, Mentos, Soda, Fire, Ice}; // Define different food types
     public FoodType foodType;  // Store the type of food
     public float bulletSpeed = 10f;
     public float bulletLifeTime = 2f;

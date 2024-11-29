@@ -234,7 +234,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afffda1744b0e694d82853789554936f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 8854819506795147271, guid: c9113218b91415445a056ebd9b357a90, type: 3}
   target: {fileID: 0}
   radius: 4
   topSpeedOut: 5
@@ -251,7 +250,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afffda1744b0e694d82853789554936f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 0}
   target: {fileID: 0}
   radius: 10
   topSpeedOut: 5

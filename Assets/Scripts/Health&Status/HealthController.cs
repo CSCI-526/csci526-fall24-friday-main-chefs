@@ -39,6 +39,10 @@ public class HealthController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyUp(KeyCode.Q) && isPlayer) 
+        {
+            EatBullets(-3);
+        }
         // Implement Collison detection here and change the health point accordingly
         if(currentHealth <= 0 && !isDead)
         {

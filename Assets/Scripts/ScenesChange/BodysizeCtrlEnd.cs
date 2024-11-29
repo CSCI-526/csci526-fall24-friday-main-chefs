@@ -19,9 +19,9 @@ public class BodysizeCtrlEnd : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "PlayerSprite")
+        if(collision.gameObject.tag == "Player")
         {
-            gameManager.gameOver("Shed some fat and dive into the cave!", true);
+            gameManager.gameOver("Delicious in Dungeon!", true);
         }
     }
 }

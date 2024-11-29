@@ -16,5 +16,11 @@ EditorBuildSettings:
     guid: c3b322980780ee14eb4546cde51133b7
   - enabled: 1
     path: Assets/Scenes/Merge/Levels/Level1.unity
+    guid: 7795c12568c2bbd4ebb89b22b5d20689
+  - enabled: 1
+    path: Assets/Scenes/Merge/Levels/Level2.unity
     guid: e6ae6f949db3ad44bafec608a3fb1701
+  - enabled: 1
+    path: Assets/Scenes/Merge/Levels/DLC.unity
+    guid: 0a3e5ef70bfefb54496ee87f15711238
   m_configObjects: {}

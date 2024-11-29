@@ -34,11 +34,11 @@ public class BulletRespawn : MonoBehaviour
         }
         mentosRespawnTime += Time.deltaTime;
         cokeRespawnTime += Time.deltaTime;
-        if(mentosRespawnTime > 5.0f)
+        if(mentosRespawnTime > 2.0f)
         {
             mentosRespawnTime = 6.0f;
         }
-        if(cokeRespawnTime > 5.0f)
+        if(cokeRespawnTime > 2.0f)
         {
             cokeRespawnTime = 6.0f;
         }
