@@ -304,6 +304,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 175620597}
     m_Modifications:
     - target: {fileID: 713619524859358125, guid: f2b86f1fa2de948b099589db5d706a17, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1245437479}
+    - target: {fileID: 713619524859358125, guid: f2b86f1fa2de948b099589db5d706a17, type: 3}
       propertyPath: bulletSpawnDistance
       value: 0.4
       objectReference: {fileID: 0}
@@ -13817,7 +13821,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6858864129453895484, guid: f7ad9bc8bfdb74807a68eb13fa082eaa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.02
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6858864129453895484, guid: f7ad9bc8bfdb74807a68eb13fa082eaa, type: 3}
       propertyPath: m_LocalPosition.y
