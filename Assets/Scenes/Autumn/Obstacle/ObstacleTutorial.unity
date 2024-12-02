@@ -954,10 +954,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d51208216097437eb031945793f8264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasTouchedFork: 0
-  hasTouchedPoison: 0
-  endPoint: {fileID: 835896414}
-  gameManager: {fileID: 1239533451}
 --- !u!1001 &1027298163
 PrefabInstance:
   m_ObjectHideFlags: 0

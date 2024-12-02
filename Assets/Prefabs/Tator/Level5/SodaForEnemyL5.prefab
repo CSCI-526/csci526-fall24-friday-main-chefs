@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -1833446239768638761}
   m_Layer: 6
   m_Name: SodaForEnemyL5
-  m_TagString: Enemy
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,6 +162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodType: 2
-  bulletSpeed: 4
-  bulletLifeTime: 2
+  bulletSpeed: 3
+  bulletLifeTime: 5
   calories: 5

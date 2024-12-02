@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3849260019931955418}
   m_Layer: 6
   m_Name: MentosForEnemyL5
-  m_TagString: Enemy
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,6 +162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodType: 1
-  bulletSpeed: 4
-  bulletLifeTime: 3
+  bulletSpeed: 2
+  bulletLifeTime: 4
   calories: 6

@@ -162,6 +162,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodType: 4
-  bulletSpeed: 10
+  bulletSpeed: 6
   bulletLifeTime: 2
   calories: 10
+  target: {fileID: 0}
+  freezeDuration: 3
+  freezeSpeed: 2
