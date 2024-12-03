@@ -86,22 +86,22 @@ public class CookModeTrigger : MonoBehaviour
     {
         if(input == KeyCode.UpArrow)
         {
-            return '¡ü';
+            return 'ï¿½';
         }
 
         if(input == KeyCode.DownArrow)
         {
-            return '¡ý';
+            return 'ï¿½';
         }
 
         if(input == KeyCode.LeftArrow)
         {
-            return '¡û';
+            return 'ï¿½';
         }
 
         if(input == KeyCode.RightArrow)
         {
-            return '¡ú';
+            return 'ï¿½';
         }
 
         return ' ';

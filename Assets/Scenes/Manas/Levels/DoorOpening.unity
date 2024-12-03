@@ -1054,6 +1054,7 @@ MonoBehaviour:
   maxSizeDecreaseRate: 0.5
   healthDecreaseRate: 3
   healthBar: {fileID: 285312582}
+  healthNum: {fileID: 0}
 --- !u!114 &323440268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2006,7 +2007,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afffda1744b0e694d82853789554936f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 8854819506795147271, guid: c9113218b91415445a056ebd9b357a90, type: 3}
   target: {fileID: 323440273}
   radius: 4
   topSpeedOut: 5
@@ -2060,6 +2060,7 @@ MonoBehaviour:
   maxSizeDecreaseRate: 0.5
   healthDecreaseRate: 3
   healthBar: {fileID: 2059394250}
+  healthNum: {fileID: 0}
 --- !u!114 &672310652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3492,6 +3493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   door: {fileID: 517222073}
   isSteppedOn: 0
+  healthThreshold: 70
 --- !u!61 &1952454355
 BoxCollider2D:
   m_ObjectHideFlags: 0
