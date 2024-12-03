@@ -12,6 +12,7 @@ public class GameManagerScript : MonoBehaviour
     public GameObject gameOverUI;
     public GameObject crosshair;
     public LogManagerScript logManager;
+    public PathLogManager pathLogManager;
     public bool needLog = false;
     private bool isLog = false;
     private bool isPaused = false;
@@ -54,6 +55,7 @@ public class GameManagerScript : MonoBehaviour
                 result = "Lose";
             }
             logManager.ExternalUpload(BulletBase.counter, result);
+            pathLogManager.ExternalUpload(PathTrigger.pathList);
             isLog = true;
         }
         //find child in gameoverUI by name
