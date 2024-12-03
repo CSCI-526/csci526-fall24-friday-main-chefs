@@ -6,6 +6,7 @@ public class Fork : MonoBehaviour
 {
     public float forkDamage = 15;
     public TutorialPassManager tutorialPassManager;
+    public static int touchTimes = 0;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -18,6 +19,7 @@ public class Fork : MonoBehaviour
                 // Trigger the reverse movement effect
                 controller.forkEffect(forkDamage);
                 tutorialPassManager.TouchedFork();
+                touchTimes += 1;
             }
         }
     }
