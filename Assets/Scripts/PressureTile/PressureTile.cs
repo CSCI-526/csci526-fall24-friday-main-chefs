@@ -117,12 +117,12 @@ public class PressureTile : MonoBehaviour
         }
     }
 
-    void OnTriggerExit2D(Collider2D collision)
+    /*void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && !isActivated)
         {
             spriteRenderer.color = originalColor;
             Debug.Log("Trigger ended - not activated, color reset to red");
         }
-    }
+    }*/
 }
