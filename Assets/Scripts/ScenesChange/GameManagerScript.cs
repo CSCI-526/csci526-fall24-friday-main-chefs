@@ -55,7 +55,7 @@ public class GameManagerScript : MonoBehaviour
                 result = "Lose";
             }
             logManager.ExternalUpload(BulletBase.counter, result);
-            pathLogManager.ExternalUpload(PathTrigger.pathList);
+            pathLogManager.ExternalUpload(PathTrigger.pathDict);
             isLog = true;
         }
         //find child in gameoverUI by name
