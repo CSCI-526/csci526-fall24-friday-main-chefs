@@ -6,6 +6,7 @@ public class Fork : MonoBehaviour
 {
     public float forkDamage = 15;
     public static int touchTimes = 0;
+    public static string level = "Level1_Fork";
     public TutorialPassManager tutorialPassManager;
 
     private void OnTriggerEnter2D(Collider2D other)

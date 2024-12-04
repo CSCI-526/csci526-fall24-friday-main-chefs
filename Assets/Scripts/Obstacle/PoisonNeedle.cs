@@ -5,6 +5,7 @@ using UnityEngine;
 public class PoisonNeedle : MonoBehaviour
 {
     public static int touchTimes = 0;
+    public static string level = "Level1_Needle";
     public float reverseDuration = 5f;          // Duration of the reverse effect in seconds
     public TutorialPassManager tutorialPassManager;
 

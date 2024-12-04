@@ -5,21 +5,23 @@ using System.Collections.Generic;
 
 public class ObstacleLogManager : MonoBehaviour
 {
-    private string myurl = "https://script.google.com/macros/s/AKfycbwd0OwlutL8RX8wcDnlH2e0HpClAhOpdqfkMJaG2o2i-jl4YT8qTw_11W0zgVh49xiI/exec";
+    private string myurl = "https://script.google.com/macros/s/AKfycbyzMv41fnP1kLZAEqQTxsXSFM6WSS-Uft5cwBT6vxzTVCs9AWe8t-56Xj_7JzKsQ57DUg/exec";
+    public static Dictionary<string, int> levelDict = new Dictionary<string, int>();
 
     void Start()
     {
         // StartCoroutine(Upload());
-        PoisonNeedle.touchTimes = 0;
-        Fork.touchTimes = 0;
+        levelDict.Clear();
     }
 
     IEnumerator Upload(int needle_touchTimes, int fork_touchTimes)
     {
         WWWForm form = new WWWForm();
         form.AddField("method", "Write");
-        form.AddField("needle", needle_touchTimes.ToString());
-        form.AddField("fork", fork_touchTimes.ToString());
+        foreach (string name in levelDict.Keys)
+        {
+            form.AddField(name, levelDict[name].ToString());
+        }
 
         using UnityWebRequest www = UnityWebRequest.Post(myurl, form);
         yield return www.SendWebRequest();
