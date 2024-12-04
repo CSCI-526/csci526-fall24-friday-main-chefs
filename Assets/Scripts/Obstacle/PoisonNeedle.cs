@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PoisonNeedle : MonoBehaviour
 {
+    public static int touchTimes = 0;
     public float reverseDuration = 5f;          // Duration of the reverse effect in seconds
     public TutorialPassManager tutorialPassManager;
-    public static int touchTimes = 0;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -17,9 +17,12 @@ public class PoisonNeedle : MonoBehaviour
             if (controller != null)
             {
                 // Trigger the reverse movement effect
-                controller.ReverseMovement(reverseDuration);
-                tutorialPassManager.TouchedPoison();
                 touchTimes += 1;
+                controller.ReverseMovement(reverseDuration);
+                if (tutorialPassManager != null)
+                {
+                    tutorialPassManager.TouchedPoison();
+                }
             }
         }
     }

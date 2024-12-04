@@ -4,44 +4,23 @@ using UnityEngine;
 
 public class WinConditionManager : MonoBehaviour
 {
-    public bool hasTouchedFork = false;
-    public bool hasTouchedPoison = false;
-    public GameObject endPoint;
     public GameManagerScript gameManager;
-    
-    private SpriteRenderer endPointRenderer;
 
+    // Start is called before the first frame update
     void Start()
     {
-        endPointRenderer = endPoint.GetComponent<SpriteRenderer>();
-        endPointRenderer.color = Color.red;
+
     }
 
-    public void CheckWinCondition()
+    // Update is called once per frame
+    void Update()
     {
-        if(hasTouchedFork && hasTouchedPoison)
-        {
-            endPointRenderer.color = Color.green;
-        }
+
     }
 
-    public void TouchedFork()
+    public void OnCollisionEnter2D(Collision2D collision)
     {
-        hasTouchedFork = true;
-        CheckWinCondition();
-    }
-
-    public void TouchedPoison()
-    {
-        hasTouchedPoison = true;
-        CheckWinCondition();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.CompareTag("Player") && hasTouchedFork && hasTouchedPoison)
-        {
-            gameManager.gameOver("You've completed the challenge!", true);
-        }
+        Debug.Log("Collision detected");
+        gameManager.gameOver("\"You've completed the challenge!\"");
     }
 }

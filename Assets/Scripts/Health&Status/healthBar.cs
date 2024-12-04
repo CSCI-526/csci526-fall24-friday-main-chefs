@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class healthBar : MonoBehaviour
 {
-    public Slider slider ; 
-    public Gradient gradient ; 
-    public Image fill ; 
+    public Image fill; 
+    public Slider slider; 
+    public Gradient gradient; 
     // public Transform playerTransform; // Drag the player transform here in the Inspector
     // public Vector3 offset; // Adjust the offset to position the health bar above the player
 
@@ -14,17 +15,24 @@ public class healthBar : MonoBehaviour
     public void SetMaxHealth(float health)
     {
         slider.minValue = 0f;
-        slider.maxValue = health ; 
-        slider.value = health ; 
+        slider.maxValue = health; 
+        slider.value = health;
 
-        fill.color = gradient.Evaluate(1f);
+        if (fill != null)
+        {
+            fill.color = gradient.Evaluate(1f);
+        }
     }
 
     // Start is called before the first frame update
     public void SetHealth(float health)
     {
-        slider.value = health ;
-        fill.color = gradient.Evaluate(slider.normalizedValue);
+        slider.value = health;
+
+        if (fill != null)
+        {
+            fill.color = gradient.Evaluate(slider.normalizedValue);
+        }
     }
      // Update is called once per frame
     void Update()

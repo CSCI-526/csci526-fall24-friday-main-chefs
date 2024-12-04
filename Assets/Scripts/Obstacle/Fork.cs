@@ -5,8 +5,8 @@ using UnityEngine;
 public class Fork : MonoBehaviour
 {
     public float forkDamage = 15;
-    public TutorialPassManager tutorialPassManager;
     public static int touchTimes = 0;
+    public TutorialPassManager tutorialPassManager;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -17,9 +17,12 @@ public class Fork : MonoBehaviour
             if (controller != null)
             {
                 // Trigger the reverse movement effect
-                controller.forkEffect(forkDamage);
-                tutorialPassManager.TouchedFork();
                 touchTimes += 1;
+                controller.forkEffect(forkDamage);
+                if (tutorialPassManager != null)
+                {
+                    tutorialPassManager.TouchedFork();
+                }
             }
         }
     }

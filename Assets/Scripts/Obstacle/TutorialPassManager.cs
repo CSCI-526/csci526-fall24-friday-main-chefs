@@ -13,7 +13,7 @@ public class TutorialPassManager : MonoBehaviour
     }
 
     // check whether satisfy all the conditions
-    public void CheckWinCondition()
+    public void CheckPassTutorial()
     {
         if(hasTouchedFork && hasTouchedPoison)
         {
@@ -24,12 +24,12 @@ public class TutorialPassManager : MonoBehaviour
     public void TouchedFork()
     {
         hasTouchedFork = true;
-        CheckWinCondition();
+        CheckPassTutorial();
     }
 
     public void TouchedPoison()
     {
         hasTouchedPoison = true;
-        CheckWinCondition();
+        CheckPassTutorial();
     }
 }
