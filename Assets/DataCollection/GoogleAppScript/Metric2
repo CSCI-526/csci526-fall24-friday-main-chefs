@@ -1,0 +1,79 @@
+function doPost(e) {
+  var parameter = e.parameter;
+
+  var app = SpreadsheetApp.openById("1vxrYmBh62-uRxVLtgr6NPlVpbUC3vYmwXfPbsW_suzc");
+  var sheet = app.getSheetByName("Sheet1");
+
+  if (sheet.getRange("A1").getValue() == "") {
+    sheet.getRange("A1").setValue("Level1_Fork");
+    sheet.getRange("B1").setValue("Level1_Needle");
+    sheet.getRange("C1").setValue("Level2_Fork");
+    sheet.getRange("D1").setValue("Level2_Needle");
+    sheet.getRange("E1").setValue("Level3_Fork");
+    sheet.getRange("F1").setValue("Level3_Needle");
+    sheet.getRange("G1").setValue("Level4_Fork");
+    sheet.getRange("H1").setValue("Level4_Needle");
+  }
+
+  if (parameter.method == "Write") {
+    var newRow = sheet.getLastRow() + 1;
+    sheet.getRange(newRow, 1).setValue(parameter.Level1_Fork);
+    sheet.getRange(newRow, 2).setValue(parameter.Level1_Needle);
+    sheet.getRange(newRow, 3).setValue(parameter.Level2_Fork);
+    sheet.getRange(newRow, 4).setValue(parameter.Level2_Needle);
+    sheet.getRange(newRow, 5).setValue(parameter.Level3_Fork);
+    sheet.getRange(newRow, 6).setValue(parameter.Level3_Needle);
+    sheet.getRange(newRow, 7).setValue(parameter.Level4_Fork);
+    sheet.getRange(newRow, 8).setValue(parameter.Level4_Needle);
+    updateSheet2(); 
+    return ContentService.createTextOutput("OK");
+  }
+}
+
+function updateSheet2() {
+  var app = SpreadsheetApp.openById("1vxrYmBh62-uRxVLtgr6NPlVpbUC3vYmwXfPbsW_suzc");
+  var sheet1 = app.getSheetByName("Sheet1");
+  var sheet2 = app.getSheetByName("Sheet2");
+  var data = sheet1.getDataRange().getValues();
+  var result = [];
+
+  for (var i = 1; i < data.length; i++) {
+    for (var col = 0; col < data[i].length; col += 2) {
+      var level = "Level " + ((col / 2) + 1);
+      var needleValue = parseFloat(data[i][col + 1]);
+      var forkValue = parseFloat(data[i][col]);
+
+      if (!isNaN(needleValue)) {
+        result.push([level, "Needle", needleValue]);
+      }
+      if (!isNaN(forkValue)) {
+        result.push([level, "Fork", forkValue]);
+      }
+    }
+  }
+
+  sheet2.clear();
+  sheet2.appendRow(["Level", "Type", "Average"]);
+
+  var aggregatedData = {};
+  result.forEach(function (row) {
+    var key = row[0] + "_" + row[1];
+    if (!aggregatedData[key]) {
+      aggregatedData[key] = { sum: 0, count: 0 };
+    }
+    aggregatedData[key].sum += row[2];
+    aggregatedData[key].count++;
+  });
+
+  for (var key in aggregatedData) {
+    var parts = key.split("_");
+    var level = parts[0];
+    var type = parts[1];
+    var average = aggregatedData[key].sum / aggregatedData[key].count;
+    sheet2.appendRow([level, type, average]);
+  }
+}
+
+function onEdit(e) {
+  updateSheet2(); 
+}

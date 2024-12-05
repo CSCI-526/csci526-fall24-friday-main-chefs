@@ -1,0 +1,86 @@
+function doPost(e) {
+  var parameter = e.parameter;
+
+  var app = SpreadsheetApp.openById("1WxnXdnsXESSY5M87cJSneoM3CR2xwcbh8BGTz7WCTGk");
+  var sheet = app.getSheetByName("Sheet1");
+
+  if (sheet.getRange("A1").getValue() == "") {
+    sheet.getRange("A1").setValue("right_1");
+    sheet.getRange("B1").setValue("down_1");
+    sheet.getRange("C1").setValue("up_2");
+    sheet.getRange("D1").setValue("right_2");
+    sheet.getRange("E1").setValue("up_3");
+    sheet.getRange("F1").setValue("right_3");
+    sheet.getRange("G1").setValue("up_4");
+    sheet.getRange("H1").setValue("right_5");
+    sheet.getRange("I1").setValue("left_5");
+    sheet.getRange("J1").setValue("right_6");
+    sheet.getRange("K1").setValue("up_6");
+    sheet.getRange("L1").setValue("up_7");
+    sheet.getRange("M1").setValue("left_7");
+    sheet.getRange("N1").setValue("up_8");
+    sheet.getRange("O1").setValue("right_9");
+    sheet.getRange("P1").setValue("down_10");
+    sheet.getRange("Q1").setValue("down_11");
+    sheet.getRange("R1").setValue("right_11");
+    sheet.getRange("S1").setValue("up_12");
+    sheet.getRange("T1").setValue("right_12");
+    sheet.getRange("U1").setValue("left_13");
+    sheet.getRange("V1").setValue("down_13");
+    sheet.getRange("W1").setValue("left_14");
+    sheet.getRange("X1").setValue("up_15");
+    sheet.getRange("Y1").setValue("left_15");
+  }
+
+  if (parameter.method == "Write") {
+    var newRow = sheet.getLastRow() + 1;
+    for (var i = 0; i < 25; i++) {
+      sheet.getRange(newRow, i + 1).setValue(parameter["col" + (i + 1)]);
+    }
+    updateSheet2();
+    return ContentService.createTextOutput("OK");
+  }
+}
+
+function updateSheet2() {
+  var app = SpreadsheetApp.openById("1WxnXdnsXESSY5M87cJSneoM3CR2xwcbh8BGTz7WCTGk");
+  var sheet1 = app.getSheetByName("Sheet1");
+  var sheet2 = app.getSheetByName("Sheet2");
+  var data = sheet1.getDataRange().getValues();
+  var result = [];
+
+  for (var i = 1; i < data.length; i++) {
+    for (var col = 0; col < data[i].length; col++) {
+      var direction = data[0][col];
+      var value = parseFloat(data[i][col]);
+      if (!isNaN(value)) {
+        result.push([direction, value]);
+      }
+    }
+  }
+
+  sheet2.clear();
+  sheet2.appendRow(["Direction", "Value"]);
+
+  var aggregatedData = {};
+  result.forEach(function (row) {
+    var key = row[0];
+    if (!aggregatedData[key]) {
+      aggregatedData[key] = { sum: 0, count: 0 };
+    }
+    aggregatedData[key].sum += row[1];
+    aggregatedData[key].count++;
+  });
+
+  for (var key in aggregatedData) {
+    var average = aggregatedData[key].sum / aggregatedData[key].count;
+    sheet2.appendRow([key, average]);
+  }
+}
+
+function onEdit(e) {
+  var sheet = e.source.getActiveSheet();
+  if (sheet.getName() === "Sheet1") {
+    updateSheet2();
+  }
+}
